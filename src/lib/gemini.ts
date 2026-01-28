@@ -15,29 +15,3 @@ export const model = genAI?.getGenerativeModel({
     maxOutputTokens: 1024,
   },
 });
-
-// AIレスポンスの型定義
-export interface AICoachResponse {
-  questions: Array<{ id: string; text: string }>;
-  examples: Array<{ field: string; text: string }>;
-  critic: {
-    level: "info" | "warning" | "error";
-    messages: Array<{ code: string; text: string }>;
-  } | null;
-}
-
-export interface AIDecomposeResponse {
-  projects: Array<{ title: string; description: string }>;
-  tasks: Array<{ title: string; projectIndex?: number }>;
-  weeklyPlan: Array<{ task: string; priority: number }>;
-}
-
-export interface AIValidateResponse {
-  isValid: boolean;
-  errors: Array<{
-    code: string;
-    field: string;
-    message: string;
-    suggestion: string;
-  }>;
-}

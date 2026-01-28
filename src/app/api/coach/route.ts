@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { model, AICoachResponse } from "@/lib/gemini";
+import { model } from "@/lib/gemini";
+import { AICoachResponse } from "@/lib/types";
 
 // POST: AIコーチから，ユーザーが目標や計画を入力する際に、適切な質問、例、批判的フィードバックを提供
 export async function POST(request: NextRequest) {
