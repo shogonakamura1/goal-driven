@@ -15,6 +15,7 @@ model User {
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
   longGoals LongGoal[]
+  sessions Session[]
 }
 
 model LongGoal {
@@ -25,4 +26,18 @@ model LongGoal {
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
   user      User     @relation(fields: [userId], references: [id])
+}
+
+model Session {
+  id String @id @default(cuid())
+  userId String
+  refreshHash String @unique
+  expiresAt DateTime
+  revokedAt DateTime?
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([expiresAt])
 }
