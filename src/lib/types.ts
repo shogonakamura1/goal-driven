@@ -11,6 +11,11 @@ export interface UserResponse {
   createdAt: Date;
 }
 
+export interface LoginRequest {
+  email: string;
+  password: string;
+}
+
 // AIレスポンスの型定義
 export interface AICoachResponse {
   questions: Array<{ id: string; text: string }>;

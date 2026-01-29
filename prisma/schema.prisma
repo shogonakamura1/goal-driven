@@ -1,6 +1,6 @@
 generator client {
   provider = "prisma-client"
-  output = "../src/generated/prisma"
+  output   = "../src/generated/prisma"
 }
 
 datasource db {
@@ -8,14 +8,14 @@ datasource db {
 }
 
 model User {
-  id        String        @id @default(uuid())
+  id        String     @id @default(uuid())
   name      String
   email     String     @unique
   password  String
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
   longGoals LongGoal[]
-  sessions Session[]
+  sessions  Session[]
 }
 
 model LongGoal {
@@ -29,12 +29,12 @@ model LongGoal {
 }
 
 model Session {
-  id String @id @default(cuid())
-  userId String
-  refreshHash String @unique
-  expiresAt DateTime
-  revokedAt DateTime?
-  createdAt DateTime @default(now())
+  id          String    @id @default(cuid())
+  userId      String
+  refreshHash String    @unique
+  expiresAt   DateTime
+  revokedAt   DateTime?
+  createdAt   DateTime  @default(now())
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
