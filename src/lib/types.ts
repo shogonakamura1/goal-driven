@@ -16,6 +16,10 @@ export interface LoginRequest {
   password: string;
 }
 
+export interface AccessTokenPayload {
+  sub: string;
+}
+
 // AIレスポンスの型定義
 export interface AICoachResponse {
   questions: Array<{ id: string; text: string }>;

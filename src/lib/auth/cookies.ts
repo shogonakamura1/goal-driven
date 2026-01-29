@@ -19,3 +19,21 @@ export function setAuthCookies(res: NextResponse, accessToken: string, refreshTo
     maxAge: 60 * 60 * 24 * 30,
   })
 }
+
+export function clearAuthCookies(res: NextResponse) {
+  res.cookies.set("access_token", "", {
+    httpOnly: true,
+    secure: isProd,
+    sameSite: "lax",
+    path: "/",
+    maxAge: 0,
+  });
+
+  res.cookies.set("refresh_token", "", {
+    httpOnly: true,
+    secure: isProd,
+    sameSite: "lax",
+    path: "/api/sessions",
+    maxAge: 0,
+  });
+}
